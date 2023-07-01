@@ -1,0 +1,13 @@
+// Specify which version of protoBuff you want to use
+syntax = "proto3";
+
+message Stock {
+    string name = 1;
+    int32 quantity = 2;
+    int32 buy_price = 3;
+    int32 market_price = 4;
+}
+
+message Portfolio {
+    repeated Stock stock = 1;
+}
