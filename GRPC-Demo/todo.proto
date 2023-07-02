@@ -1,0 +1,22 @@
+syntax = "proto3";
+
+package todoPackage;
+
+message TodoItem{
+    int32 id = 1;
+    string text = 2;
+}
+
+message TodoItems{
+    repeated TodoItem todoItems = 1;
+}
+
+message void {}
+
+service Todo {
+    rpc createTodo( TodoItem ) returns ( TodoItem );
+    // In protoc, there are no functions which take no input, so we have to define another message called void
+    rpc readTodos (void) returns (TodoItems);
+}
+
+
