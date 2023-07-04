@@ -26,4 +26,9 @@ function createTodo(call, callback) {
   todos.push(todoItem);
   callback(null, todoItem);
 }
-function readTodos(call, callback) {}
+function readTodos(call, callback) {
+  //sending back object becuase our proto definition of readTodos says so.
+  //Also, the key todoItems has to be 'todoItems' and nothing else because we have specefied this in proto.
+  // Think of it as being a schema, for schema or object class todoItems, the field items is pre defined
+  callback(null, { todoItems: todos });
+}

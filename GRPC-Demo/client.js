@@ -23,6 +23,10 @@ client.createTodo(
     text: text,
   },
   (err, response) => {
-    console.log("Received from server" + JSON.stringify(response));
+    console.log("Calling Create Todo" + JSON.stringify(response));
   }
 );
+
+client.readTodos({}, (err, response) => {
+  console.log("Received from server " + JSON.stringify(response));
+});
