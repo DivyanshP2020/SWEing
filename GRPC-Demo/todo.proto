@@ -17,6 +17,7 @@ service Todo {
     rpc createTodo( TodoItem ) returns ( TodoItem );
     // In protoc, there are no functions which take no input, so we have to define another message called parameterLess
     rpc readTodos (parameterLess) returns (TodoItems);
+    rpc readTodosStream (parameterLess) returns (stream TodoItem);
 }
 
 

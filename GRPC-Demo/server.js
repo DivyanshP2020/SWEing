@@ -13,6 +13,7 @@ server.bind("localhost:40000", grpc.ServerCredentials.createInsecure());
 server.addService(todoPackage.Todo.service, {
   createTodo: createTodo,
   readTodos: readTodos,
+  readTodosStream: readTodosStream,
 });
 server.start();
 
@@ -31,4 +32,8 @@ function readTodos(call, callback) {
   //Also, the key todoItems has to be 'todoItems' and nothing else because we have specefied this in proto.
   // Think of it as being a schema, for schema or object class todoItems, the field items is pre defined
   callback(null, { todoItems: todos });
+}
+function readTodosStream(call, callback) {
+  todos.forEach((t) => call.write(t));
+  call.end();
 }

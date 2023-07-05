@@ -23,10 +23,19 @@ client.createTodo(
     text: text,
   },
   (err, response) => {
-    console.log("Calling Create Todo" + JSON.stringify(response));
+    console.log("Calling Create Todo\n" + JSON.stringify(response));
   }
 );
 
 client.readTodos({}, (err, response) => {
-  console.log("Received from server " + JSON.stringify(response));
+  console.log("******List of Todos received from server*******\n");
+  if (response.todoItems != null) {
+    response.todoItems.forEach((todoItem) => console.log(todoItem.text));
+  }
 });
+
+const callForFetchingTodos = client.readTodosStream();
+callForFetchingTodos.on("data", (item) => {
+  console.log("received item from server " + JSON.stringify(item));
+});
+callForFetchingTodos.on("end", (e) => console.log("server done!"));
