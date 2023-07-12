@@ -13,3 +13,7 @@ npm install @grpc/proto-loader
 
 Run server.js
 go to terminal, type node client.js
+
+
+RESOURCES
+https://www.linkedin.com/advice/0/what-best-practices-designing-testing-grpc-rest-endpoints
